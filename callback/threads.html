@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>DNA Film Social</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<h1>DNA Film Social</h1>
+<p id="msg">Returning to the DNA Film Social tool on this computer…</p>
+</main>
+<script>
+// Threads only accepts HTTPS redirect URIs. This page forwards the OAuth result
+// to the local tool listening on this same computer (127.0.0.1). Nothing is
+// stored or sent anywhere else.
+(function () {
+  var q = window.location.search;
+  if (!/[?&](code|error)=/.test(q)) {
+    document.getElementById("msg").textContent = "Nothing to do here.";
+    return;
+  }
+  window.location.replace("http://127.0.0.1:8765/callback/threads" + q);
+})();
+</script>
+</body>
+</html>
